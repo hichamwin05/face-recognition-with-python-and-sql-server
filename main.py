@@ -2,8 +2,6 @@ import cv2
 import pyodbc
 import numpy as np
 import face_recognition
-import pyttsx3
-import serial
 video_capture = cv2.VideoCapture(1)
 connection_string = pyodbc.connect('Driver={SQL Server};'
                       'Server=DESKTOP-TQ1SBD9\MSSQLSERVER99;'
@@ -39,11 +37,6 @@ while True:
         cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, name, (left + 16, bottom - 16), font, 1.0, (255, 255, 255), 1)
-
-        #if (name != "unknown"):
-            #pyobj = pyttsx3.init()
-            #pyobj.say("Welcoum" + name)
-            #pyobj.runAndWait()
 
     cv2.imshow('Video', frame)
     k = cv2.waitKey(1) & 0xff
