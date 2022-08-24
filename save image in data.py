@@ -1,5 +1,4 @@
 import os
-import sqlite3
 import face_recognition as facerecg
 
 #making a sql file
@@ -9,11 +8,6 @@ conn = pyodbc.connect('Driver={SQL Server};'
                       'Database=face_recognition;'
                       'Trusted_Connection=yes;')
 cur = conn.cursor()
-#def to conv image file to binary
-def convert_binary(file):
-    with open(file,"rb") as img_read:
-        img = img_read.read()
-        return img
 
 print ("Label the Images properly")
 #input folder path, checks the folder for .jpg file
@@ -28,10 +22,6 @@ for files in os.listdir(path):
         # print (name)
         #extract the path of img file
         file_path = os.path.join(path,files)
-        # print(file_path)
-        #converts img to binary
-        img_binary = convert_binary(file_path)
-        # print(img_binary)
         # #load the image file
         face = facerecg.load_image_file(file_path)
         # #encoding the image file
